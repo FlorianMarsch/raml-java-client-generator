@@ -28,7 +28,7 @@ public class Ping {
 
     public String get() {
         WebTarget target = this._client.target(getBaseUri());
-        final javax.ws.rs.client.Invocation.Builder invocationBuilder = target.request(MediaType.APPLICATION_JSON_TYPE);
+        final javax.ws.rs.client.Invocation.Builder invocationBuilder = target.request(MediaType.TEXT_PLAIN_TYPE);
         Response response = invocationBuilder.get();
         if (response.getStatusInfo().getFamily()!= Family.SUCCESSFUL) {
             Response.StatusType statusInfo = response.getStatusInfo();
