@@ -1,0 +1,10 @@
+#%RAML 1.0
+title: text-plain
+
+/ping:
+  get:
+    responses:
+       200:
+         body:
+           text/plain:
+             example: ${muleapp.version.info}
