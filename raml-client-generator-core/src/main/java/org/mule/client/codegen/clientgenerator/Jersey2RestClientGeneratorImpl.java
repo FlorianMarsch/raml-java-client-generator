@@ -85,12 +85,7 @@ public class Jersey2RestClientGeneratorImpl implements RestClientGenerator {
             }
         }
 
-        // for compatibility to 0.1.1 version: default is json
-        String tempMediaTypeRef = "APPLICATION_JSON_TYPE";
-        if (returnType.equals(cm.ref(String.class))) {
-        	tempMediaTypeRef = "TEXT_PLAIN_TYPE";
-        }
-		final JVar invocationBuilder = body.decl(JMod.FINAL, cm.ref(Invocation.Builder.class), "invocationBuilder", targetVal.invoke("request").arg(cm.directClass(MediaType.class.getName()).staticRef(tempMediaTypeRef)));
+        final JVar invocationBuilder = body.decl(JMod.FINAL, cm.ref(Invocation.Builder.class), "invocationBuilder", targetVal.invoke("request").arg(cm.directClass(MediaType.class.getName()).staticRef("APPLICATION_JSON_TYPE")));
 
         if (headerParameterParam != null && action.getHeaders() != null && !action.getHeaders().isEmpty()) {
             final Map<String, TypeFieldDefinition> headers = action.getHeaders();
